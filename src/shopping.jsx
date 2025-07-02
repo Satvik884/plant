@@ -7,10 +7,15 @@ export default function Shopping() {
     const [num,setnum] = useState(0);
     const [cart,setcart] = useState([]);
     const counter = (e) => {
-        setnum(num+1);
-        setcart([...cart,e]);
-              
-    }
+        setnum(num + 1);
+ 
+        const exists = cart.some(item => item.name === e.name);
+      
+        if (!exists) {
+          setcart([...cart, e]);
+        }
+      };
+      
     useEffect(() => {
         console.log("Cart updated:", cart);
       }, [cart]); 
